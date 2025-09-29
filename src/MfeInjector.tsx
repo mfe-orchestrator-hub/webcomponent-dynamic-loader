@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { useMFEContext } from "./MfeProvider";
 
-export enum ReleaseType {
-  UMD = "UMD",
-  ES = "ES",
-}
+export const ReleaseType = {
+  UMD: "UMD",
+  ES: "ES",
+} as const;
+
+export type ReleaseType = typeof ReleaseType[keyof typeof ReleaseType];
 
 const getReleaseType = (release: ReleaseType) => {
   if (!release) return "umd";
